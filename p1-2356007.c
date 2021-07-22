@@ -5,16 +5,18 @@
 
     unsigned int definePontoDeAcesso (int n_antenas){
         float dist_max, dist_min, dist;
-        double dX, dY;
+        double dX, dY, dXAntena, dYAntena;
         int antena, antena_compara, antena_dist_min;
         dist_min = FLT_MAX;
 
         for (antena = 0; antena < n_antenas; antena++)
         {
+            dXAntena = pegaX(antena);
+            dYAntena = pegaY(antena);
             for (dist_max = 0, antena_compara = 0; antena_compara < n_antenas; antena_compara++)
             {
-                dX = pegaX(antena) - pegaX(antena_compara);
-                dY = pegaY(antena) - pegaY(antena_compara);
+                dX = dXAntena - pegaX(antena_compara);
+                dY = dYAntena - pegaY(antena_compara);
 
                 dist = sqrt(dX * dX + dY * dY);
 
